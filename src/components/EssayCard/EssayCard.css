@@ -1,0 +1,27 @@
+.essay-card {
+    background-color: white;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+    width: 34vh;
+}
+.essay p {
+  font-size: 14px;
+}
+.essay-card-right {
+  text-align: right;
+}
+.btn-read {
+  background-color: white;
+  color: #01B4BC;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 3px;
+  text-align: right;
+}
