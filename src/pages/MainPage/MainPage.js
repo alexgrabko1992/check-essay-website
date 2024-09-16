@@ -1,6 +1,6 @@
-import Header from '/Users/stella/diploma/front/check-essay-website/src/components/Header/Header';
-import VariantGrid from '/Users/stella/diploma/front/check-essay-website/src/components/VariantGrid/VariantGrid';
-import EssayGrid from '/Users/stella/diploma/front/check-essay-website/src/components/EssayGrid/EssayGrid';
+import Header from '../../components/Header/Header';
+import VariantGrid from '../../components/VariantGrid/VariantGrid';
+import EssayGrid from '../../components/EssayGrid/EssayGrid';
 
 function MainPage() {
   return (
