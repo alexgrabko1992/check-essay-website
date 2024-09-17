@@ -8,7 +8,7 @@ const VariantGrid = () => {
       <h2>База вариантов</h2>
       <div className="variant-grid">
         {[...Array(25)].map((_, i) => (
-          <button key={i} className="variant-btn">вариант</button>
+          <button key={i} className="variant-btn">вариант {i}</button>
         ))}
       </div>
       <button className="btn-create">написать сочинение по своему варианту</button>

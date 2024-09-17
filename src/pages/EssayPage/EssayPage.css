@@ -1,0 +1,37 @@
+.essay-content {
+    margin: 8vh;
+    margin-top: 3vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-end; */
+
+  }
+
+  .like-button {
+    margin-left: auto;
+    display: block;
+    background-color: #25274D;
+    margin-top: 2vh;
+    color: #01B4BC;
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease;
+  }
+  
+  .like-button:hover {
+    background-color: white;
+  }
+
+  .back-link-container .back-link {
+    display: block;
+    text-align: left;
+    color: #25274D;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 8vh;
+    margin-top: 1vh;
+  }

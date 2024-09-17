@@ -12,9 +12,10 @@ const Header = () => {
         <p>сервис по подготовке к сочинению</p>
       </div>
       <div className="header-right">
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
           <>
             <button className="grey-btn">доступно проверок: 2</button>
+            <Link to="/essays"><button className="btn">сочинения</button></Link>
             <Link to="/"><button className="btn">главная</button></Link>
             <button className="btn">профиль</button>
           </>
