@@ -1,19 +1,7 @@
-.essay {
-  margin-left: 6vh;
-  margin-right: 6vh;
-}
-
 .essay-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(34vh, 1fr));
   gap: 10px;
   margin-left: 3vw;
   margin-right: 3vw;
-}
-
-.essay h2 {
-  margin-top: 5vh;
-  margin-bottom: 3vh;
-  font-size: 32px;
-  font-weight: 600;
 }

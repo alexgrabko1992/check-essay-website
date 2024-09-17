@@ -5,14 +5,18 @@
     border: none;
     border-radius: 3px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     width: 34vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .essay p {
   font-size: 14px;
 }
 .essay-card-right {
-  text-align: right;
+  text-align: end;
+  margin-top: auto;
 }
 .btn-read {
   background-color: white;
@@ -23,5 +27,4 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   border-radius: 3px;
-  text-align: right;
 }

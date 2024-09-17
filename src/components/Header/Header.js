@@ -18,6 +18,9 @@ const Header = () => {
             <Link to="/essays"><button className="btn">сочинения</button></Link>
             <Link to="/"><button className="btn">главная</button></Link>
             <button className="btn">профиль</button>
+            {/* <Link to="/essays" className="link">сочинения</Link>
+            <Link to="/" className="link">главная</Link>
+            <Link to="/" className="link">профиль</Link> */}
           </>
         ) : (
           <>
