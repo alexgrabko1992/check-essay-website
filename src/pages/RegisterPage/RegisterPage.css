@@ -1,0 +1,78 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #EDEDED;
+  }
+  
+  .register-box {
+    background-color: white;
+    padding: 3vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    width: 50vw;
+    height: 50vh;
+  }
+  
+  .back-link {
+    display: block;
+    text-align: left;
+    color: #01B4BC;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  /* Title */
+  .register-container h1 {
+    /* margin-bottom: 4vh; */
+    font-size: 32px;
+    font-weight: 600;
+  }
+  
+  /* Form */
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    /* padding: 5vw; */
+    margin-left: 6vw;
+    margin-right: 6vw;
+  }
+  
+  .input-field {
+    padding: 1.7vh;
+    margin-bottom: 2vh;
+    border: 1px solid #EDEDED;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #EDEDED;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border: 1px solid black;
+    background-color: white;
+  }
+  
+  /* Button */
+  .register-button {
+    margin-top: 1.5vh;
+    padding: 1.7vh;
+    background-color: #01B4BC;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .register-button:hover {
+    background-color: white;
+    color: #01B4BC;
+  }
+  

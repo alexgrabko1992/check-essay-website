@@ -31,17 +31,6 @@ header {
     margin-right: 10vh;
   }
 
-  .grey-btn {
-    background-color: #EDEDED;
-    padding: 0px;
-    margin-left: 10px;
-    height: 30px;
-    width: 165px;
-    border-radius: 3px;
-    border: none;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
   .btn {
     background-color: #01B4BC;
     color: white;
@@ -54,4 +43,28 @@ header {
     border: none;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
+
+  .grey-btn {
+    background-color: #EDEDED;
+    padding: 0px;
+    margin-left: 10px;
+    height: 30px;
+    width: 165px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .reg-btn {
+    background-color: white;
+    color: #01B4BC;
+    /* padding: 10px 15px; */
+    cursor: pointer;
+    margin-left: 10px;
+    height: 30px;
+    width: 100px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
   

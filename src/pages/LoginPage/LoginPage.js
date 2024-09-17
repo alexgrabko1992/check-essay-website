@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './RegistrationPage.css';  // Стили для страницы
+import './LoginPage.css';
 
 function RegistrationPage() {
   const [email, setEmail] = useState('');
@@ -32,8 +32,8 @@ function RegistrationPage() {
   };
 
   return (
-    <body className='registration-body'>
-      <div className="registration-container">
+    <body className='login-body'>
+      <div className="login-container">
         <div className="back-link-container">
           <a href="/" className="back-link">на главную</a>
         </div>
