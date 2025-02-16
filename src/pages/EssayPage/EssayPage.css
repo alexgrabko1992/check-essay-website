@@ -1,37 +1,89 @@
+.essay-breadcrumbs-section {
+  display: flex;
+  flex-direction: row;
+  margin-left: 8vh;
+  margin-top: 2vh;
+  background-color: #f8f9fc;
+  font-size: 14px;
+}
+.breadcrumbs-href {
+  /* color: #01B4BC; */
+  color: black;
+  /* text-decoration: none; */
+}
+.breadcrumbs-variant {
+  /* color: #01B4BC; */
+  color: black;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
 .essay-content {
     margin: 8vh;
-    margin-top: 3vh;
+    margin-top: 2vh;
     /* display: flex;
     flex-direction: column;
     justify-content: flex-end; */
 
   }
+.info-container {
+  display: flex;
+}
+.like-button {
+  margin-left: auto;
+  background-color: #25274D;
+  margin-top: 1vh;
+  color: #01B4BC;
+  cursor: pointer;
+  height: 4vh;
+  width: 20vh;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+}
+.like-text {
+  text-align: right;
+  margin-top: 1.5vh;
+  margin-right: 2vh;
+  width: 100%;
+}
+.info-text {
+  margin-left: 0;
+  margin-top: 1vh;
+  text-align: left;
+  width: 100%;
+  font-size: 14px;
+}
 
-  .like-button {
-    margin-left: auto;
-    display: block;
-    background-color: #25274D;
-    margin-top: 2vh;
-    color: #01B4BC;
-    cursor: pointer;
-    height: 30px;
-    width: 100px;
-    border-radius: 3px;
-    border: none;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    transition: background-color 0.3s ease;
-  }
-  
-  .like-button:hover {
-    background-color: white;
-  }
+.comment-section {
+  text-align: left;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 1vh;
+  margin-top: 3vh;
+  font-size: 14px;
+}
+.auther-text {
+  font-weight: 500;
+}
+.date-text {
+  font-weight: 200;
+  margin-left: 1vh;
+}
+.comment-text {
+  margin-top: 1vh;
+}
 
-  .back-link-container .back-link {
-    display: block;
-    text-align: left;
-    color: #25274D;
-    font-size: 14px;
-    text-decoration: none;
-    margin-left: 8vh;
-    margin-top: 1vh;
-  }
+.like-button:hover {
+  background-color: white;
+}
+.back-link-container .back-link {
+  display: block;
+  text-align: left;
+  color: #25274D;
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 8vh;
+  margin-top: 1vh;
+}

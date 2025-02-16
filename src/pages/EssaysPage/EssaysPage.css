@@ -9,3 +9,11 @@
     font-size: 32px;
     font-weight: 600;
   }
+  .essay-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(34vh, 1fr));
+    gap: 10px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+  
