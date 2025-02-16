@@ -1,0 +1,94 @@
+.profile-container {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.content {
+  margin-left: 10vh;
+  margin-right: 10vh;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.info {
+  display: flex;
+  padding: 20px;
+}
+
+.info-text .nickname {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+
+.info-text .email {
+  font-size: 28px;
+  color: #555;
+  margin-bottom: 2vh;
+}
+
+.info-text .results {
+  font-size: 18px;
+  margin-bottom: 1vh;
+}
+
+.info-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.btn {
+  font-size: 20px;
+  width: 30vh;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+  padding: 0px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.edit {
+  background-color: #fff;
+  color: #01B4BC;
+}
+
+.btn.logout {
+  background-color: #01B4BC;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.chart {
+  height: 300px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.essay-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(34vh, 1fr));
+  gap: 10px;
+  margin-left: 10vh;
+  margin-right: 10vh;
+}
+
+
+.btn:active {
+  transform: scale(0.98);
+}
