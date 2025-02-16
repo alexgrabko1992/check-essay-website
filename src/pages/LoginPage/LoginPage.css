@@ -1,10 +1,7 @@
 .login-body {
     font-family: Arial, sans-serif;
     background-color: #EDEDED;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
+    height: 100vh;
     margin: 0;
   }
   
@@ -16,6 +13,7 @@
     text-align: center;
     width: 40vw;
     height: 30vh;
+    margin-bottom: 20vh;
   }
 
   .input-group {
@@ -41,13 +39,14 @@
     transition: background-color 0.2s ease; /* Плавный переход для изменения цвета */
   }
   
-  .login-container .back-link {
+  .back-link {
+    display: block;
+    text-align: left;
     color: #01B4BC;
-    display: flex;
-    justify-content: flex-start; 
-    margin-bottom: 20px;
+    font-size: 14px;
+    text-decoration: none;
   }
-  
+
   .login-container h1 {
     color: #000;
     margin-bottom: 4vh;

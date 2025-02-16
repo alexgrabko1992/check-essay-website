@@ -4,10 +4,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 100vh;
     margin: 0;
   }
-  
+
   .login-container {
     background-color: white;
     padding: 40px;
@@ -16,6 +16,7 @@
     text-align: center;
     width: 40vw;
     height: 30vh;
+    margin-bottom: 20vh;
   }
 
   .input-group {
@@ -41,7 +42,7 @@
     transition: background-color 0.2s ease; /* Плавный переход для изменения цвета */
   }
   
-  .login-container .back-link {
+  .back-link {
     color: #01B4BC;
     display: flex;
     justify-content: flex-start; 

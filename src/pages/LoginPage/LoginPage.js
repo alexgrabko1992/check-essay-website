@@ -53,7 +53,7 @@ function LoginPage() {
   return (
     <div className='login-body'>
       <div className="login-container">
-        <div className="back-link-container">
+        <div>
           <a href="/" className="back-link">на главную</a>
         </div>
         <h1>Добро пожаловать, {nickname}</h1>
