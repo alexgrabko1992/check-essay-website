@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import VariantsPage from './pages/VariantsPage/VariantsPage';
 import MainPage from './pages/MainPage/MainPage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 import EssayPage from './pages/EssayPage/EssayPage';
 import EssaysPage from './pages/EssaysPage/EssaysPage';
 import EssayInputPage from './pages/EssayInputPage/EssayInputPage';
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/variants" element={<VariantsPage />} />

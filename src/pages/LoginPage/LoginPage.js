@@ -1,24 +1,44 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
-function RegistrationPage() {
-  const [email, setEmail] = useState('');
+function LoginPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const nickname = location.state?.nickname;
+  const mail = location.state?.email;
+
+  const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  // Функция для валидации email
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  // Обработчик нажатия на кнопку
-  const handleLogin = () => {
-    if (!email) {
-      setMessage('введите электронную почту!');
-    } else if (!validateEmail(email)) {
-      setMessage('введите электронную почту корректно🙄');
+  const handleLogin = async () => {
+    if (!password) {
+      setMessage('введите пароль!');
     } else {
-      setMessage('Вы успешно вошли!');
+      try {
+        const data = {
+            mail: mail,
+            password: password
+        };
+        
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        const response = await fetch(`http://localhost:8080/users/login`, options);
+        if (response.status === 200) {
+            navigate('/');
+        } else if (response.status === 404) {
+            setMessage('Неверный пароль');
+        } else {
+          setMessage('Ошибка при авторизации');
+        }
+      } catch (error) {
+        setMessage('Ошибка подключения к серверу');
+      }
     }
   };
 
@@ -26,26 +46,25 @@ function RegistrationPage() {
     setMessage('');
   }, 4000);
 
-  // Обработчик изменения поля email
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   return (
-    <body className='login-body'>
+    <div className='login-body'>
       <div className="login-container">
         <div className="back-link-container">
           <a href="/" className="back-link">на главную</a>
         </div>
-        <h1>Войти</h1>
-        <p>Введите почту, чтобы войти или зарегистрироваться</p>
+        <h1>Добро пожаловать, {nickname}</h1>
+        <p>Введите пароль, чтобы войти в систему</p>
         <div className="input-group">
           <input
-            type="email"
-            placeholder="электронная почта"
-            value={email}
-            onChange={handleEmailChange}
-            className={`email-input ${email ? 'active' : ''}`}
+            type="password"
+            placeholder="пароль"
+            value={password}
+            onChange={handlePasswordChange}
+            className={`password-input ${password ? 'active' : ''}`}
           />
           <button onClick={handleLogin} className="login-button">
             продолжить
@@ -53,8 +72,8 @@ function RegistrationPage() {
         </div>
         {message && <div className="message">{message}</div>}
       </div>
-    </body>
+    </div>
   );
 }
 
-export default RegistrationPage;
+export default LoginPage;
