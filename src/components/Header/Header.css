@@ -56,19 +56,6 @@ header {
     margin-left: 10vh;
   }
 
-  .btn {
-    background-color: #01B4BC;
-    color: white;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-left: 10px;
-    height: 30px;
-    width: 100px;
-    border-radius: 3px;
-    border: none;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
   .link {
     color: white;
     cursor: pointer;
@@ -77,7 +64,7 @@ header {
     width: 100px;
     border: none;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 19px;
     text-align: end;
   }
   
@@ -88,7 +75,7 @@ header {
     height: 30px;
     width: 100px;
     border: none;
-    font-size: 18px;
+    font-size: 19px;
     text-align: end;
   }
 
@@ -102,12 +89,24 @@ header {
     border: none;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
+
+  .login-btn {
+    background-color: #01B4BC;
+    color: white;
+    cursor: pointer;
+    margin-left: 1vh;
+    height: 30px;
+    width: 100px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
   .reg-btn {
     background-color: white;
     color: #01B4BC;
-    /* padding: 10px 15px; */
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 5vh;
     height: 30px;
     width: 100px;
     border-radius: 3px;
