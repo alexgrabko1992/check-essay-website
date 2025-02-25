@@ -30,6 +30,7 @@
   border-top-right-radius: 10px;
   font-size: 14px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: justify;
 }
 
 .variant-text-section {
@@ -43,6 +44,7 @@
   border-bottom-right-radius: 10px;
   font-size: 14px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: justify;
 }
 
 .essay-page {
@@ -184,3 +186,8 @@
     background-color: #01969c;
   }
   
+  .message {
+    font-size: 14px;
+    margin-top: 10px;
+    color: green;
+  }

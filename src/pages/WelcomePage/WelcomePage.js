@@ -27,7 +27,7 @@ function WelcomePage() {
           const nickname = data.nickname;
           navigate('/login', { state: { nickname, email } });
         } else if (response.status === 404) {
-          navigate('/register');
+          setMessage('Аккаунта с такой почтой нет');
         } else {
           setMessage('Ошибка при проверке пользователя');
         }
@@ -53,7 +53,10 @@ function WelcomePage() {
           <a href="/" className="back-link">на главную</a>
         </div>
         <h1>Войти</h1>
-        <p>Введите почту, чтобы войти или зарегистрироваться</p>
+        <div className="reg-group">
+          <p>Впервые здесь?</p>
+          <a href="/register" className="back-link-reg">Зарегистрироваться</a>
+        </div>
         <div className="input-group">
           <input
             type="email"

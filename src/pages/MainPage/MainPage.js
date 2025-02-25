@@ -9,32 +9,12 @@ const MainPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8080/users/count')
-        .then(response => response.json())
-        .then(data => {
-            setUsersCount(data["users_count"]);
-            setIsLoading(false);
-        })
-        .catch(error => {
-            console.error('Error fetching users count:', error);
-            setIsLoading(false);
-        });
-
-        fetch('http://localhost:8080/essays/count')
-        .then(response => response.json())
-        .then(data => {
-            setEssaysCount(data["essays_count"]);
-            setIsLoading(false);
-        })
-        .catch(error => {
-            console.error('Error fetching essays count:', error);
-            setIsLoading(false);
-        });
-
-        fetch('http://localhost:8080/variants/count')
+        fetch('http://localhost:8080/counts')
         .then(response => response.json())
         .then(data => {
             setVariantsCount(data["variants_count"]);
+            setEssaysCount(data["essays_count"]);
+            setUsersCount(data["users_count"])
             setIsLoading(false);
         })
         .catch(error => {

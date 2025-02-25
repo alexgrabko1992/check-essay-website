@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import './EssayInputPage.css';
 import Header from '../../components/Header/Header';
 
 const EssayInputPage = () => {
+  const navigate = useNavigate();
   const params = useParams();
   if (!params || !params.id) {
       throw new Error("Параметр 'id' отсутствует в URL");
   }
-  const id = params.id;
-
-  console.log(id)
+  const id = +params.id;
 
   const [essayText, setEssayText] = useState('');
+  const [essayId, setEssayId] = useState(0);
   const [variantText, setVariantText] = useState('');
   const [variantTitle, setVariantTitle] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [message, setMessage] = useState('');
+
+  const location = useLocation();
+  const essay_id = location.state?.id || 0;
 
   useEffect(() => {
     const fetchVariantData = async () => {
@@ -36,20 +40,137 @@ const EssayInputPage = () => {
       }
     };
 
+    const fetchEssayData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/users/me/essays/${essay_id}`);
+        if (!response.ok) {
+          throw new Error(`Ошибка при загрузке сочинения ${essay_id}`);
+        }
+        const data = await response.json();
+        setEssayText(data.essay_text || '');
+      } catch (error) {
+        console.error('Ошибка при загрузке информации о сочинении:', error);
+        setEssayText('Ошибка при загрузке текста сочинения');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    setEssayId(essay_id)
+    if (essay_id !== 0) {
+      fetchEssayData()
+    }
     fetchVariantData();
-  }, [id]);
+  }, [id, essay_id]);
 
   const handleInputChange = (e) => {
     setEssayText(e.target.value);
   };
 
-  const handleSave = () => {
-    console.log('Saved:', essayText);
+  const handleSave = async () => {
+    if (!essayText) {
+      setMessage('введите текст сочинения!')
+    }
+    else if (essayId === 0) {
+      try {
+        const data = {
+            variant_id: id,
+            essay_text: essayText,
+        };
+        
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+            withCredentials: true
+        };
+        const response = await fetch(`http://localhost:8080/essays`, options);
+        if (response.status === 201) {
+          setMessage('сочинение сохранено')
+          console.log("Сочинение успешно создано")
+          const data = await response.json();
+          setEssayId(data["essay_id"])
+        } else if (response.status === 404) {
+          console.log('Ошибка в тексте');
+        } else {
+          console.log('Ошибка сервера');
+        }
+      } catch (error) {
+        console.log('Ошибка подключения к серверу');
+      }
+    } else {
+      try {
+        const data = {
+            essay_text: essayText,
+        };
+        
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+            withCredentials: true
+        };
+        const response = await fetch(`http://localhost:8080/essays/` + essayId, options);
+        if (response.status === 200) {
+          setMessage('сочинение сохранено')
+          console.log("Текст успешно сохранен")
+        } else if (response.status === 404) {
+          console.log('Ошибка в тексте');
+        } else {
+          console.log('Ошибка сервера');
+        }
+      } catch (error) {
+        console.log('Ошибка подключения к серверу');
+      }
+    }
   };
 
-  const handleCheck = () => {
-    console.log('Checked:', essayText);
+  const handleCheck = async () => {
+    if (!essayText) {
+      setMessage('введите текст сочинения!')
+    } else {
+      try {
+        const data = {
+            variant_id: id,
+            essay_text: essayText,
+        };
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: "include",
+            withCredentials: true
+        };
+        const response = await fetch(`http://localhost:8080/essays/`  + essayId + `/save`, options);
+        if (response.status === 200) {
+          setMessage('сочинение отправлено на проверку')
+          console.log("Сочинение отправлено на проверку")
+          navigate('/profile');
+
+          console.log(response)
+          const result = await response.json();
+          const essay_id = result.essay_id;
+          setEssayId(essay_id)
+        } else {
+          console.log('Ошибка сервера');
+        }
+      } catch (error) {
+        console.log('Ошибка подключения к серверу');
+      }
+    }
   };
+
+  setTimeout(() => {
+    setMessage('');
+  }, 3000);
 
   return (
     <div>
@@ -57,14 +178,14 @@ const EssayInputPage = () => {
       <div className="variant-breadcrumbs-section">
     
         <a className="breadcrumbs-href" href="/variants">варианты</a>  
-        {id == 0 ? 
+        {id === 0 ? 
         <a className="breadcrumbs-variant"> / индивидуальный</a>
         :
         <a className="breadcrumbs-variant"> / {id}</a>
         }
         
       </div>
-      {id == 0 ? 
+      {id === 0 ? 
         <div className="form-container">
           <h1>Ключи для проверки</h1>
           <form action="/submit" method="POST">
@@ -133,6 +254,7 @@ const EssayInputPage = () => {
       </div>        
       </div>
         <div className="button-container">
+          {message && <div className="message">{message}</div>}
           <button className="save-btn" onClick={handleSave}>сохранить</button>
           <button className="check-btn" onClick={handleCheck}>проверить</button>
         </div>

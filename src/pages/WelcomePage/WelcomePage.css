@@ -25,6 +25,20 @@
     align-items: center;
     gap: 5px; /* Отступ между инпутом и кнопкой */
   }
+  
+  .reg-group {
+    display: flex; /* Устанавливаем контейнер для инпута и кнопки */
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+  }
+
+  .input-group p {
+    display: flex;
+    justify-content: flex-start; 
+  }
 
   .login-container input[type="email"]:focus {
     outline: none;
@@ -48,6 +62,16 @@
     justify-content: flex-start; 
     margin-bottom: 20px;
   }
+
+  .back-link-reg {
+    color: #000;
+    display: flex;
+    justify-content: flex-start; 
+  }
+
+  .back-link-reg:hover {
+      color: #01B4BC;
+  }
   
   .login-container h1 {
     color: #000;
@@ -64,10 +88,6 @@
     border: none;
     border-radius: 0px 5px 5px 0px;
     cursor: pointer;
-  }
-  
-  .login-container .login-button:hover {
-    background-color: #38a2b0;
   }
   
   .login-container .message {

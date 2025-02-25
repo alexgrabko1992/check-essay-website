@@ -26,7 +26,9 @@ function LoginPage() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            credentials: "include",
+            withCredentials: true
         };
         const response = await fetch(`http://localhost:8080/users/login`, options);
         if (response.status === 200) {

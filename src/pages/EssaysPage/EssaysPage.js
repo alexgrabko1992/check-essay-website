@@ -32,10 +32,12 @@ function EssaysPage() {
           <div className="essay-grid">
             {essays.map((essay) => (
               <EssayCard
+                key={essay.id}
                 id={essay.id}
-                nickname={essay.user_id}
-                title={essay.title}
-                variant={essay.variant_id}
+                ifUserEssay={false}
+                nickname={essay.author_nickname}
+                title={essay.variant_title}
+                variant_id={essay.variant_id}
                 score={essay.score}
                 likes={essay.likes}
               />
