@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 100vh;
     background-color: #EDEDED;
   }
   
@@ -13,10 +13,10 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
     width: 50vw;
-    height: 50vh;
+    margin-bottom: 10vh;
   }
   
-  .register-box .back-link {
+  .back-link {
     display: block;
     text-align: left;
     color: #01B4BC;
@@ -26,7 +26,7 @@
   
   /* Title */
   .register-container h1 {
-    /* margin-bottom: 4vh; */
+    margin-bottom: 4vh;
     font-size: 32px;
     font-weight: 600;
   }
@@ -58,7 +58,7 @@
   
   /* Button */
   .register-button {
-    margin-top: 1.5vh;
+    margin-top: 2vh;
     padding: 1.7vh;
     background-color: #01B4BC;
     color: white;
@@ -75,4 +75,18 @@
     background-color: white;
     color: #01B4BC;
   }
+
+  .login-group {
+    display: flex; /* Устанавливаем контейнер для инпута и кнопки */
+    gap: 5px;
+    margin-bottom: 3vh;
+    margin-left: 12vh;
+  }
   
+  .back-link-login {
+    color: #000;
+  }
+
+  .back-link-login:hover {
+      color: #01B4BC;
+  }
