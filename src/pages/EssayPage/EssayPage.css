@@ -28,6 +28,12 @@
   margin-right: 2vh;
   width: 100%;
 }
+
+.like-content {
+  display: flex;
+  flex-direction: row;
+}
+
 .info-text {
   margin-left: 0;
   margin-top: 1vh;
@@ -42,6 +48,7 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   padding: 1vh;
   margin-top: 3vh;
+  margin-bottom: 3vh;
   font-size: 14px;
 }
 .auther-text {
@@ -118,4 +125,53 @@
 .content-container {
   margin-left: 6vh;
   margin-right: 6vh;
+}
+
+.result-content {
+  margin-bottom: 4vh;
+  margin-top: 4vh;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.result-table th, .result-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.result-table th {
+  background-color: #25274D;
+  color: #ffffff;
+}
+
+.result-table td {
+  font-size: 14px;
+  color: black;
+}
+
+.result-table .points {
+  color: #01B4BC;
+  text-align: center;
+}
+
+.btn-publish {
+  margin-left: 6vh;
+  background-color: #01B4BC;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 2vh;
+  height: 4vh;
+  font-size: 14px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+}
+.btn-publish:hover {
+  background-color: white;
+  color: #01B4BC;
 }

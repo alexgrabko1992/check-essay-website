@@ -8,7 +8,6 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import EssayPage from './pages/EssayPage/EssayPage';
 import EssaysPage from './pages/EssaysPage/EssaysPage';
 import EssayInputPage from './pages/EssayInputPage/EssayInputPage';
-import ResultPage from './pages/ResultPage/ResultPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 function App() {
@@ -24,8 +23,6 @@ function App() {
         <Route path="/essays" element={<EssaysPage />} />
         <Route path="/essays/:id" element={<EssayPage />} />
         <Route path="/essay-input/:id" element={<EssayInputPage />} />
-        <Route path="/results/:id" element={<ResultPage />} />
-
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

@@ -6,6 +6,7 @@ import './EssayPage.css';
 function EssayPage() {
   const { id } = useParams();
   const [essay, setEssay] = useState(null);
+  const [isPublished, setIsPublished] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [likes, setLikes] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,87 @@ function EssayPage() {
   const location = useLocation();
   const ifUserEssay = location.state?.ifUserEssay || false;
 
+
+  const criteria = [
+    {
+      id: "K1",
+      title: "Отражение позиции автора по указанной проблеме исходного текста",
+      content:
+        "Позиция ученика в целом верно отражает позицию автора. Ученик правильно указал, что внешняя цель человека не всегда соответствует его сущности.",
+      points: 1,
+    },
+    {
+      id: "K2",
+      title: "Комментарий к позиции автора по указанной проблеме исходного текста",
+      content: "Комментарий должен включать примеры и пояснения, которые обосновывают позицию автора.",
+      points: 2,
+    },
+    {
+      id: "K3",
+      title: "Собственное отношение к позиции автора по указанной проблеме",
+      content: "Ученик высказывает свою точку зрения и аргументирует её с опорой на содержание текста.",
+      points: 2,
+    },
+    {
+      id: "K4",
+      title: "Фактическая точность речи",
+      content: "Ответ должен быть точным, без фактических ошибок в описании событий или выводах.",
+      points: 1,
+    },
+    {
+      id: "K5",
+      title: "Логичность речи",
+      content: "Текст должен быть логически связанным и последовательным.",
+      points: 1,
+    },
+    {
+      id: "K6",
+      title: "Соблюдение этических норм",
+      content: "Ответ не должен содержать неэтичные высказывания или нарушать нормы общения.",
+      points: 1,
+    },
+    {
+      id: "K7",
+      title: "Соблюдение орфографических норм",
+      content: "Ответ должен быть написан без орфографических ошибок.",
+      points: 1,
+    },
+    {
+      id: "K8",
+      title: "Соблюдение пунктуационных норм",
+      content: "Текст должен соответствовать правилам пунктуации.",
+      points: 1,
+    },
+    {
+      id: "K9",
+      title: "Соблюдение грамматических норм",
+      content: "Ответ не должен содержать грамматических ошибок.",
+      points: 1,
+    },
+    {
+      id: "K10",
+      title: "Соблюдение речевых норм",
+      content: "Речь должна быть ясной, выразительной и соответствовать ситуации.",
+      points: 1,
+    },
+  ];
+
+
   useEffect(() => {
+    const fetchIsLiked = async () => {
+      try {
+        const likeResponse = await fetch(`http://localhost:8080/likes/is_liked/${id}`, { credentials: 'include' });
+        if (!likeResponse.ok) throw new Error('Ошибка проверки лайка');
+        
+        const likeData = await likeResponse.json();
+        setIsLiked(likeData.is_liked);
+
+      } catch (error) {
+        console.error('Ошибка загрузки:', error);
+      } finally {
+        setLoading(false);
+      }
+  };
     const fetchEssay = async () => {
       if (ifUserEssay) {
         try {
@@ -22,13 +103,9 @@ function EssayPage() {
           
           const data = await response.json();
           setEssay(data);
-          setLikes(data.likes);
+          setLikes(data["likes"]);
+          setIsPublished(data["is_published"])
   
-          const likeResponse = await fetch(`http://localhost:8080/likes/is_liked/${id}`, { credentials: 'include' });
-          if (!likeResponse.ok) throw new Error('Ошибка проверки лайка');
-          
-          const likeData = await likeResponse.json();
-          setIsLiked(likeData.is_liked);
         } catch (error) {
           console.error('Ошибка загрузки:', error);
         } finally {
@@ -41,13 +118,9 @@ function EssayPage() {
         
         const data = await response.json();
         setEssay(data);
-        setLikes(data.likes);
+        setLikes(data["likes"]);
+        setIsPublished(data["is_published"])
 
-        const likeResponse = await fetch(`http://localhost:8080/likes/is_liked/${id}`, { credentials: 'include' });
-        if (!likeResponse.ok) throw new Error('Ошибка проверки лайка');
-        
-        const likeData = await likeResponse.json();
-        setIsLiked(likeData.is_liked);
       } catch (error) {
         console.error('Ошибка загрузки:', error);
       } finally {
@@ -57,7 +130,11 @@ function EssayPage() {
   };
 
     fetchEssay();
-  }, [id, ifUserEssay]);
+    if (isPublished) {
+      fetchIsLiked()
+    }
+
+  }, [id, ifUserEssay, isPublished]);
 
   const handleLikeToggle = async () => {
     try {
@@ -116,11 +193,49 @@ function EssayPage() {
           <div className="info-text">
             автор {essay.author_nickname}
           </div>
-          <div className="like-text">{likes}</div>
-          <button onClick={handleLikeToggle} className={`like-button ${isLiked ? 'liked' : ''}`}>
-            {isLiked ? 'Убрать лайк' : 'Нравится'}
-          </button>
+
+          {isPublished ? 
+          <div className='like-content'>
+            <div className="like-text">{likes}</div>
+            <button onClick={handleLikeToggle} className={`like-button ${isLiked ? 'liked' : ''}`}>
+              {isLiked ? 'Убрать лайк' : 'Нравится'}
+            </button>   
+          </div>
+          :
+          <div></div>       
+        }
+
         </div>
+        <section className="result-content">
+          <table className="result-table">
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Критерий</th>
+                <th>Пояснение</th>
+                <th>Баллы</th>
+              </tr>
+            </thead>
+            <tbody>
+              {criteria.map((criterion, index) => (
+                <tr key={criterion.id}>
+                  <td>K{index + 1}</td>
+                  <td>{criterion.title}</td>
+                  <td>{criterion.content}</td>
+                  <td className="points">{criterion.points}</td>
+                </tr>
+              ))}
+              <tr>
+              <td colSpan="3" style={{ fontWeight: "bold", textAlign: "left" }}>Сумма баллов:</td>
+              <td className="points" style={{ fontWeight: "bold" }}>
+                {criteria.reduce((sum, criterion) => sum + criterion.points, 0)}
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+      {isPublished ? 
         <div>
           {essay.comments?.map((comment) => (
             <div className="comment-section" key={comment.id}>
@@ -130,6 +245,9 @@ function EssayPage() {
             </div>
           ))}
         </div>
+        :
+        <div></div>
+        }
         </div>
       </main>
     </div>
