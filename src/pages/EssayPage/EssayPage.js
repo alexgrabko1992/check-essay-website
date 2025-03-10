@@ -2,17 +2,26 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import { useParams, useLocation } from 'react-router-dom';
 import './EssayPage.css';
+import Cookies from "universal-cookie";
 
 function EssayPage() {
   const { id } = useParams();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [essay, setEssay] = useState(null);
   const [isPublished, setIsPublished] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [likes, setLikes] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [newComment, setNewComment] = useState('');
 
   const location = useLocation();
   const ifUserEssay = location.state?.ifUserEssay || false;
+
+  const cookies = new Cookies();
+  useEffect(() => {
+    const session = cookies.get("session");
+    setIsLoggedIn(!!session);
+  }, []);
 
 
   const criteria = [
@@ -162,6 +171,41 @@ function EssayPage() {
     }
   };
 
+  const handleAddComment = async () => {
+    if (!newComment.trim()) return; // Если комментарий пустой, не отправляем
+
+    try {
+      const response = await fetch(`http://localhost:8080/comments/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ comment_text: newComment }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Ошибка при добавлении комментария');
+      }
+
+      const newCommentData = await response.json();
+      setNewComment('');
+
+      setEssay((prevEssay) => {
+        const updatedEssay = {
+          ...prevEssay,
+          comments: [newCommentData, ...prevEssay.comments],
+        };
+        return updatedEssay;
+      });
+
+
+
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleString('ru-RU', {
@@ -194,15 +238,13 @@ function EssayPage() {
             автор {essay.author_nickname}
           </div>
 
-          {isPublished ? 
+          {isPublished && 
           <div className='like-content'>
             <div className="like-text">{likes}</div>
-            <button onClick={handleLikeToggle} className={`like-button ${isLiked ? 'liked' : ''}`}>
+            <button onClick={handleLikeToggle} className={`like-button ${isLiked ? 'liked' : ''}`} disabled={!isLoggedIn}>
               {isLiked ? 'Убрать лайк' : 'Нравится'}
             </button>   
-          </div>
-          :
-          <div></div>       
+          </div>    
         }
 
         </div>
@@ -235,8 +277,21 @@ function EssayPage() {
           </table>
         </section>
 
-      {isPublished ? 
+      {isPublished && 
         <div>
+          {isLoggedIn &&
+            <div className="comment-input-section">
+              <textarea
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                placeholder="Введите ваш комментарий..."
+                className="comment-input"
+              />
+              <button onClick={handleAddComment} className="add-comment-button">
+                Добавить комментарий
+              </button>
+            </div>
+          }
           {essay.comments?.map((comment) => (
             <div className="comment-section" key={comment.id}>
               <span className="author-text">{comment.author_nickname}</span>
@@ -245,8 +300,6 @@ function EssayPage() {
             </div>
           ))}
         </div>
-        :
-        <div></div>
         }
         </div>
       </main>

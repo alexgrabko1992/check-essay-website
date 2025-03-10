@@ -90,6 +90,11 @@
   background-color: white;
 }
 
+.like-button:disabled {
+  cursor: auto;
+  background-color: #25274D; /* Цвет остается тем же */
+}
+
 .like-button.liked {
   background-color: white;
 }
@@ -172,6 +177,42 @@
   transition: background-color 0.3s ease;
 }
 .btn-publish:hover {
+  background-color: white;
+  color: #01B4BC;
+}
+
+
+.comment-input-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vh;
+}
+
+.comment-input {
+  max-height: 6vh;
+  width: 100%;
+  padding: 1vh;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  margin-bottom: 1vh;
+  outline: none;
+  resize: none;
+  overflow-y: auto;
+}
+
+.add-comment-button {
+  background-color: #01B4BC;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 1vh 2vh;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+}
+
+.add-comment-button:hover {
   background-color: white;
   color: #01B4BC;
 }

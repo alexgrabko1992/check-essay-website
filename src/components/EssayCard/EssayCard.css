@@ -11,13 +11,20 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .essay p {
   font-size: 14px;
 }
+
 .essay-card-right {
   text-align: end;
   margin-top: auto;
 }
+
+.essay-card p {
+  margin-bottom: 1.5vh;
+}
+
 .btn-read {
   background-color: white;
   color: #01B4BC;
