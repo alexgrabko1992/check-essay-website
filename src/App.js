@@ -9,6 +9,7 @@ import EssayPage from './pages/EssayPage/EssayPage';
 import EssaysPage from './pages/EssaysPage/EssaysPage';
 import EssayInputPage from './pages/EssayInputPage/EssayInputPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import AppealsPage from './pages/AppealsPage/AppealsPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/variants" element={<VariantsPage />} />
+        <Route path="/appeals" element={<AppealsPage />} />
         <Route path="/essays" element={<EssaysPage />} />
         <Route path="/essays/:id" element={<EssayPage />} />
         <Route path="/essay-input/:id" element={<EssayInputPage />} />
