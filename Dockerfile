@@ -17,6 +17,4 @@ RUN npm run build
 RUN npm install -g serve
 
 # Запускаем статичный сервер
-RUN serve -s build &
-
-EXPOSE 3000
+CMD ["serve", "-s", "build"]

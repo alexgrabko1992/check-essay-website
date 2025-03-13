@@ -1,0 +1,9 @@
+
+services:
+  app:
+    build: .
+    container_name: ui_app
+    restart: always
+    working_dir: /app
+    ports:
+      - "3000:3000"
